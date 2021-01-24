@@ -1,22 +1,23 @@
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./components/Home"
+import Home from "./components/Home";
+import AllPosts from "./components/AllPosts";
 import Navigation from "./components/Navigation";
-import AllPosts from "./components/AllPosts"
+import React, { useState } from "react";
 
 function App() {
+  const [showHome, setShowHome] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [showAllPosts, setShowAllPosts] = useState(false);
+  const [showCat, setShowCat] = useState(false);
   return (
-    <Router>
       <div>
         <header>
-          <Navigation />
         </header>
         <div className="app-body">
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/all-posts" component={AllPosts}/>
+          <Home/>
+          <AllPosts sh={{sh: showAllPosts}}/>
         </div>
       </div>
-    </Router>
   );
 }
 
